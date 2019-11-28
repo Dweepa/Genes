@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/creation_data/.ipynb_checkpoints/class_mapping-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/creation_data/.ipynb_checkpoints/class_mapping-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/creation_data/class_mapping.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/creation_data/class_mapping.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/drug_class_identification/phase1/metadata.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/drug_class_identification/phase1/metadata.csv" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -7,5 +19,61 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="" />
+      <created>1574921408010</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574921408010</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Directory structure">
+      <created>1574921507769</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574921507770</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created external datasets">
+      <created>1574922290781</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574922290781</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Directory structure" />
+    <MESSAGE value="Created external datasets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created external datasets" />
   </component>
 </project>
