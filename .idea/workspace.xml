@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creation_data/.ipynb_checkpoints/cell_line_analysis-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/creation_data/.ipynb_checkpoints/cell_line_analysis-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creation_data/cell_line_analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/creation_data/cell_line_analysis.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +67,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579419862899</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Cell line analysis based on meta data">
+      <created>1579429804843</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579429804843</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,6 +94,7 @@
     <MESSAGE value="Directory structure" />
     <MESSAGE value="Created external datasets" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Dweepa/Genes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/Dweepa/Genes" />
+    <MESSAGE value="Cell line analysis based on meta data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cell line analysis based on meta data" />
   </component>
 </project>
