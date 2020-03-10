@@ -43,10 +43,10 @@ if (os.path.exists('../Models/' + model_name) == 0):
     os.mkdir('../Models/' + model_name)
 
 # Load necessary files
-full = pickle.load(open('../Data/full', 'rb'))
-dbfile = open('../Data/test_perts', 'rb')
+full = pickle.load(open('../../CubeBio/Data/full', 'rb'))
+dbfile = open('../../CubeBio/Data/test_perts', 'rb')
 test_pert = pickle.load(dbfile)
-dbfile = open('../Data/train_perts', 'rb')
+dbfile = open('../../CubeBio/Data/train_perts', 'rb')
 train_pert = pickle.load(dbfile)
 dbfile.close()
 
