@@ -1,16 +1,16 @@
 from gensim.models import word2vec
-from rdkit import Chem
-from mol2vec.features import mol2alt_sentence, MolSentence, DfVec, sentences2vec
-from mol2vec.helpers import depict_identifier, plot_2D_vectors, IdentifierTable, mol_to_svg
+from rdkit import Chem, AllChem
 import pandas as pd
 import pickle
+
+from helper_functions import mol2alt_sentence
 
 model = word2vec.Word2Vec.load('./model_300dim.pkl')
 
 df = pd.read_csv("../data/drug_class_identification/phase1/drugbank.csv", nrows=100)
 df.drop(df[df.smiles.isna()].index, inplace = True)
-df.drop(df[df.atc.isna()].index, inplace = True)
-df.drop(df[[False if len(smile)<250 else True for smile in df.smiles]].index, inplace = True)
+# df.drop(df[df.atc.isna()].index, inplace = True)
+# df.drop(df[[False if len(smile)<250 else True for smile in df.smiles]].index, inplace = True)
 
 
 # sentences = []

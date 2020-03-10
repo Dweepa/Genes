@@ -1,3 +1,6 @@
+from rdkit import Chem
+from rdkit.Chem import AllChem
+
 def mol2alt_sentence(mol, radius):
     """Same as mol2sentence() expect it only returns the alternating sentence
     Calculates ECFP (Morgan fingerprint) and returns identifiers of substructures as 'sentence' (string).
