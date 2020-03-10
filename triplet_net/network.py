@@ -68,21 +68,14 @@ class siamese:
 
     # TODO: fill up densenet
     def dense_network(self, x, num_layers, neuron, emb_len, dropout):
-        fc1 = self.fc_layer(x, 400, "fc1")
-        ac1 = tf.nn.relu(fc1)
-        op_concat1 = tf.concat([x, ac1], axis=1)
+        inputs = x
+        for a in range(num_layers):
+            layer = tf.layers.dense(inputs, neuron, 'selu', name='layer' + str(a))
+            inputs = layer
 
-        fc2 = self.fc_layer(op_concat1, 400, "fc2")
-        ac2 = tf.nn.relu(fc2)
-        op_concat2 = tf.concat([op_concat1, ac2], axis=1)
-
-        fc3 = self.fc_layer(op_concat2, 400, "fc3")
-        ac3 = tf.nn.relu(fc3)
-        op_concat3 = tf.concat([op_concat2, ac3], axis=1)
-
-        fc4 = self.fc_layer(op_concat3, 32, "fc4")
-        fc4 = tf.nn.l2_normalize(fc4, axis=1,name = "fc_normal")
-        return fc4
+        logits = tf.layers.dense(inputs, num_classes, None, name='output')
+        logits = tf.math.l2_normalize(logits, axis=1, name="logits")
+        return logits
 
     def fc_layer(self, bottom, n_weight, name):
         assert len(bottom.get_shape()) == 2
