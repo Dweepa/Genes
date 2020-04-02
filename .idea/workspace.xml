@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPVec/skipgram.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SPVec/skipgram.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/.ipynb_checkpoints/Top 14 ATC LINCS-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/triplet_net/.ipynb_checkpoints/Top 14 ATC LINCS-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Samples from Training Data LINCS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Samples from Training Data.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Samples from Validation Data LINCS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Samples from Validation Data.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Top 14 ATC LINCS.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/triplet_net/Top 14 ATC LINCS.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Training Data After TNN.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Validation Data After TNN.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/triplet_net/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/triplet_net/network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPVec/Smiles2vec.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SPVec/Smiles2vec.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/triplet_net/Top 3 ATC SMILES.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/triplet_net/Top 3 ATC SMILES.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583671508722</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Neural net on densenet embeddings">
+      <created>1583803680738</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1583803680738</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,6 +171,7 @@
     <MESSAGE value="Created external datasets" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Dweepa/Genes" />
     <MESSAGE value="Triplet Net: LINCS + Smiles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Triplet Net: LINCS + Smiles" />
+    <MESSAGE value="Neural net on densenet embeddings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Neural net on densenet embeddings" />
   </component>
 </project>
