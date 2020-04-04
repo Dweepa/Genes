@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SPVec/Smiles2vec.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SPVec/Smiles2vec.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Top 3 ATC SMILES.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/triplet_net/Top 3 ATC SMILES.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPVec/skipgram.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SPVec/skipgram.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skipgram/mol2vec_skipgram.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/skipgram/mol2vec_skipgram.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583803680738</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Skipgram + attention + things I didn't commit before">
+      <created>1585821155048</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585821155048</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +179,7 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/Dweepa/Genes" />
     <MESSAGE value="Triplet Net: LINCS + Smiles" />
     <MESSAGE value="Neural net on densenet embeddings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Neural net on densenet embeddings" />
+    <MESSAGE value="Skipgram + attention + things I didn't commit before" />
+    <option name="LAST_COMMIT_MESSAGE" value="Skipgram + attention + things I didn't commit before" />
   </component>
 </project>
