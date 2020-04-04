@@ -41,8 +41,8 @@ import sys
 
 dimensions = 100
 
-# w2v = word2vec.Word2Vec.load('my_100.model')
-w2v = word2vec.Word2Vec.load('../SPVec/model_300dim.pkl')
+w2v = word2vec.Word2Vec.load('mine_100')
+# w2v = word2vec.Word2Vec.load('../SPVec/model_300dim.pkl')
 
 ## Load ATC data
 
@@ -52,13 +52,13 @@ with open("./data/mol_sentences.pkl", "rb") as file:
 atc = [sentence[1][0] for sentence in sentences]
 sentences = [sentence[3] for sentence in sentences]
 
-dimensions = 50
-window_size = 5
-min_count = 5
-negative = 15
-iterations = 10
-
-w2v = Word2Vec(sentences, size=dimensions, window=window_size, min_count=min_count, negative=negative, iter=20)
+# dimensions = 50
+# window_size = 5
+# min_count = 5
+# negative = 15
+# iterations = 10
+# 
+# w2v = Word2Vec(sentences, size=dimensions, window=window_size, min_count=min_count, negative=negative, iter=20)
 
 ## Vectorisation
 
@@ -100,8 +100,10 @@ X = sum_vectors
 y = atc
 
 atc_counter = Counter(y)
-num_classes = 14
-top_atc = [a for a, _ in atc_counter.most_common(num_classes)]
+num_classes = 3
+top_atc = [a for a
+, _ in atc_counter.most_common(num_classes)]
+top_atc = [2, 6, 9]
 
 temp_x = []
 temp_y = []
@@ -139,7 +141,7 @@ def accuracy(y_true, y_pred, previous_accuracy, figname, filename, atc_labels=at
 
     return max(curr_accuracy, previous_accuracy)
 
-path = f"../results/auto/mol2vec_model/{balance_path}/"
+path = f"../results/auto/my100/{balance_path}/"
 ## KNN
 def KNN(X_train, X_test, y_train, y_test, previous_accuracy):
     neigh = KNeighborsClassifier(n_neighbors=5)

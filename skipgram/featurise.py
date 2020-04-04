@@ -49,7 +49,7 @@ def mol2alt_sentence(mol, radius):
 # with open("./data/mol_sentences.pkl", "wb") as file:
 # 	pickle.dump(sentences, file)
 
-df = pd.read_csv("../data/pcba.csv", nrows=200000)
+df = pd.read_csv("../data/pcba.csv", nrows=300000)
 smiles = df.smiles
 df = 0
 
