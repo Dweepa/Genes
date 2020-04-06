@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPVec/Smiles2vec.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SPVec/Smiles2vec.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/triplet_net/Top 3 ATC SMILES.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/triplet_net/Top 3 ATC SMILES.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="d08e13f1-4644-4815-b05b-2d8041d49aed" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +19,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1UEUmbP1ZTeFOtmRLa8kSu52VjU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -150,7 +148,35 @@
       <option name="project" value="LOCAL" />
       <updated>1583803680738</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Skipgram + attention + things I didn't commit before">
+      <created>1585821155048</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1585821155048</updated>
+    </task>
+    <task id="LOCAL-00009" summary="UI + things I didn't commit before">
+      <created>1586001401652</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586001401652</updated>
+    </task>
+    <task id="LOCAL-00010" summary="UI + things I didn't commit before">
+      <created>1586002001622</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1586002001622</updated>
+    </task>
+    <task id="LOCAL-00011" summary="UI + things I didn't commit before">
+      <created>1586002613387</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1586002613387</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,11 +193,17 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/ReactUI/minorproj" />
+      <path value="$PROJECT_DIR$/UI/minorproj" />
+    </ignored-roots>
     <MESSAGE value="Directory structure" />
     <MESSAGE value="Created external datasets" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Dweepa/Genes" />
     <MESSAGE value="Triplet Net: LINCS + Smiles" />
     <MESSAGE value="Neural net on densenet embeddings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Neural net on densenet embeddings" />
+    <MESSAGE value="Skipgram + attention + things I didn't commit before" />
+    <MESSAGE value="UI + things I didn't commit before" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI + things I didn't commit before" />
   </component>
 </project>
