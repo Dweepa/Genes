@@ -41,15 +41,15 @@ def mol2alt_sentence(mol, radius):
 # 		sentence.append(df.name[x])
 # 		sentence.append(df.atc[x])
 # 		sentence.append(df.smiles[x])
-# 		sentence.append(mol2alt_sentence(Chem.MolFromSmiles(df.smiles[x]), 1))
+# 		sentence.append(mol2alt_sentence(Chem.MolFromSmiles(df.smiles[x]), 2))
 # 		sentences.append(sentence)
 # 	except Exception as e:
 # 		print(e)
 
-# with open("./data/mol_sentences.pkl", "wb") as file:
+# with open("./data/mol_sentences_2.pkl", "wb") as file:
 # 	pickle.dump(sentences, file)
 
-df = pd.read_csv("../data/pcba.csv", nrows=300000)
+df = pd.read_csv("../data/pcba.csv", nrows=100000)
 smiles = df.smiles
 df = 0
 
@@ -62,7 +62,7 @@ i = 0
 for smile in smiles:
 	i+=1
 	try:
-		sentences.append(mol2alt_sentence(Chem.MolFromSmiles(smile), 1))
+		sentences.append(mol2alt_sentence(Chem.MolFromSmiles(smile), 2))
 		sys.stdout.write(f"\r{i}/{total}")
 	except Exception as e:
 		# print(e)
@@ -70,5 +70,5 @@ for smile in smiles:
 
 print("\n", len(sentences), sep="")
 
-with open("./data/pcba_mol_sentences.pkl", "wb") as file:
+with open("./data/pcba_mol_sentences_2.pkl", "wb") as file:
 	pickle.dump(sentences, file)

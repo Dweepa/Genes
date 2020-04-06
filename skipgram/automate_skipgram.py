@@ -4,6 +4,7 @@ import multiprocessing
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import ExtraTreesClassifier
 
 import pandas as pd
 import pickle
@@ -39,9 +40,9 @@ import sys
 
 ## Train Large Dataset
 
-dimensions = 100
+dimensions = int(sys.argv[3].split("_")[-1])
 
-w2v = word2vec.Word2Vec.load('mine_100')
+w2v = word2vec.Word2Vec.load(sys.argv[3])
 # w2v = word2vec.Word2Vec.load('../SPVec/model_300dim.pkl')
 
 ## Load ATC data
@@ -80,7 +81,7 @@ sum_vectors = []
 for vector in vectors:
     arr = np.asarray(vector)
     arr = arr.reshape((int(arr.shape[0]/dimensions), dimensions) )
-    sum_vectors.append(arr.sum(axis=0))
+    sum_vectors.append(arr.sum(axis=0)/arr.shape[0])
 
 sum_vectors = np.asarray(sum_vectors)
 
@@ -100,10 +101,10 @@ X = sum_vectors
 y = atc
 
 atc_counter = Counter(y)
-num_classes = 3
-top_atc = [a for a
-, _ in atc_counter.most_common(num_classes)]
-top_atc = [2, 6, 9]
+num_classes = int(sys.argv[2])
+top_atc = [a for a, _ in atc_counter.most_common(int(sys.argv[2]))]
+if int(sys.argv[2])==3:
+    top_atc = [2, 6, 9]
 
 temp_x = []
 temp_y = []
@@ -141,7 +142,7 @@ def accuracy(y_true, y_pred, previous_accuracy, figname, filename, atc_labels=at
 
     return max(curr_accuracy, previous_accuracy)
 
-path = f"../results/auto/my100/{balance_path}/"
+path = f"../results/auto/{sys.argv[3]}/{balance_path}/"
 ## KNN
 def KNN(X_train, X_test, y_train, y_test, previous_accuracy):
     neigh = KNeighborsClassifier(n_neighbors=5)
@@ -155,12 +156,23 @@ def KNN(X_train, X_test, y_train, y_test, previous_accuracy):
 def RF(X_train, X_test, y_train, y_test, previous_accuracy):
     rf_model = RandomForestClassifier(n_estimators=100, 
                                    bootstrap = True,
-                                   max_features = 'sqrt', criterion='entropy')
+                                   max_features = 'sqrt', criterion='entropy', random_state=56)
     # Fit on training data
     rf_model.fit(X_train, y_train)
 
     y_pred = rf_model.predict(X_test)
     return accuracy(y_pred, y_test, previous_accuracy, f"{path}cm_{num_classes}_rf", f"{path}report_{num_classes}_rf", atc_labels)
+
+## Extra Trees
+
+def XT(X_train, X_test, y_train, y_test, previous_accuracy):
+    xt_model = ExtraTreesClassifier(n_estimators=100, warm_start=True,
+                                max_features = 'sqrt', criterion='entropy', random_state=98)
+    # Fit on training data
+    xt_model.fit(X_train, y_train)
+
+    y_pred = xt_model.predict(X_test)
+    return accuracy(y_pred, y_test, previous_accuracy, f"{path}cm_{num_classes}_xt", f"{path}report_{num_classes}_xt", atc_labels)
 
 prev_accuracy = 0
 for a in range(0, 100):
@@ -174,5 +186,12 @@ prev_accuracy = 0
 for a in range(0, 20):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=int(random.random()*100))
     prev_accuracy = RF(X_train, X_test, y_train, y_test, prev_accuracy)
-    sys.stdout.write(f"\rRF {a}/100: {prev_accuracy}")
-sys.stdout.write(f"\rRF {a}/100: {prev_accuracy}\n")
+    sys.stdout.write(f"\rRF {a}/20: {prev_accuracy}")
+sys.stdout.write(f"\rRF {a}/20: {prev_accuracy}\n")
+
+prev_accuracy = 0
+for a in range(0, 50):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=int(random.random()*100))
+    prev_accuracy = XT(X_train, X_test, y_train, y_test, prev_accuracy)
+    sys.stdout.write(f"\rRF {a}/50: {prev_accuracy}")
+sys.stdout.write(f"\rRF {a}/50: {prev_accuracy}\n")
