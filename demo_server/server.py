@@ -1,8 +1,8 @@
 import flask
 from flask import request, jsonify
 from gensim.models import word2vec
-# from rdkit import Chem
-# from rdkit.Chem import AllChem
+from rdkit import Chem
+from rdkit.Chem import AllChem
 import pandas as pd
 import pickle
 import sys
@@ -44,7 +44,7 @@ class Network:
 def mol2alt_sentence(mol, radius):
     radii = list(range(int(radius) + 1))
     info = {}
-    # _ = AllChem.GetMorganFingerprint(mol, radius, bitInfo=info)  # info: dictionary identifier, atom_idx, radius
+    _ = AllChem.GetMorganFingerprint(mol, radius, bitInfo=info)  # info: dictionary identifier, atom_idx, radius
 
     mol_atoms = [a.GetIdx() for a in mol.GetAtoms()]
     dict_atoms = {x: {r: None for r in radii} for x in mol_atoms}
@@ -69,7 +69,7 @@ def home():
 	try:
 		smile = request.args["smile"]
 		try:
-			# sentence = mol2alt_sentence(Chem.MolFromSmiles(smile), 1)
+			sentence = mol2alt_sentence(Chem.MolFromSmiles(smile), 1)
 			vector = []
 			for word in sentence:
 				try:
