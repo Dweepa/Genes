@@ -12,6 +12,19 @@ function App() {
   const [RF, setRF] = useState(0);
   const [XT, setXT] = useState(0);
   const [Smiles, setSmiles] = useState(0);
+  const [Lincs, setLincs] = useState(0);
+  const [AFIB, setAFIB] = useState(0);
+  const [AG, setAG] = useState(0);
+  const [AL, setAL] = useState(0);
+  const [AJ, setAJ] = useState(0);
+  const [AC, setAC] = useState(0);
+
+  const [AFIBtrue, setAFIBtrue] = useState(0);
+  const [AGtrue, setAGtrue] = useState(0);
+  const [ALtrue, setALtrue] = useState(0);
+  const [AJtrue, setAJtrue] = useState(0);
+  const [ACtrue, setACtrue] = useState(0);
+
   const [Actual, setActual] = useState(0);
   const [Input, setInput] = useState(0);
   const [isVisible, setVisible] = useState(false);
@@ -56,13 +69,20 @@ function App() {
     }
     else if(Lclicked)
     {
-      fetch('/LINCS/'+Input).then(res => res.json()).then(data => {
-          setSmiles(data['genes']);
-          setKNN(data["KNN"]);
-          setANN(data["ANN"]);
-          setRF(data["RF"]);
-          setXT(data["XT"]);
-          setActual(data['Actual']);
+      fetch('http://localhost:5000/getAdrClassification?features='+Input).then(res => res.json()).then(data => {
+          setLincs(data['feature']);
+          setAFIB(data["AFIB"]);
+          setAG(data['AG'])
+          setAL(data['AL'])
+          setAJ(data['AJ'])
+          setAC(data['AC'])
+
+          setAFIBtrue(data['AFIBtrue']);
+          setAGtrue(data['AGtrue']);
+          setALtrue(data['ALtrue']);
+          setAJtrue(data['AJtrue']);
+          setACtrue(data['ACtrue']);
+
           setVisible(true);
 
           return (<FadeIn>
@@ -83,16 +103,19 @@ function App() {
     </div>}
             {Lclicked &&
               <div>
-              <FadeIn>
-            <Button outline style={{"border-color":"teal","color":"teal", "margin-bottom":"20px"}} onClick={getSMILES}> Switch to SMILES </Button>
-            <p style={{"color":"pink"}}>LINCS</p>
-            <form onSubmit={getClass}>
-            <input type="text" class="rounded border border-primary" name="smiles" style={{'letter-spacing':'2px','text-align':'center','color':'white','width':'750px','font-size':'80%','margin':'10px','padding':'20px', "background-color":"#282c34"}}onChange={event => setInput(event.target.value)}/>
-            <br/>
-              <Button type="submit" outline color="warning" style={{'margin':'10px','padding':'10px'}}> Submit </Button>
-            </form>
-            </FadeIn>
-            </div>}
+                <FadeIn>
+                  <Button outline style={{"border-color":"teal","color":"teal", "margin-bottom":"20px"}} onClick={getSMILES}> Switch to SMILES </Button>
+                  <p style={{"color":"pink"}}>LINCS</p>
+                  <form onSubmit={getClass}>
+                    <input type="text" class="rounded border border-primary" name="smiles" 
+                    style={{'letter-spacing':'2px','text-align':'center','color':'white','width':'750px','font-size':'80%',
+                    'margin':'10px','padding':'20px', "background-color":"#282c34"}}
+                    onChange={event => setInput(event.target.value)}/>
+                    <br/>
+                    <Button type="submit" outline color="warning" style={{'margin':'10px','padding':'10px'}}> Submit </Button>
+                  </form>
+                </FadeIn>
+              </div>}
 
             {Sclicked &&
               <div>
@@ -108,7 +131,7 @@ function App() {
             </div>
             }
 
-            { Sclicked!=Lclicked &&
+            { Sclicked &&
               <div> <FadeIn>
               <div>
                     {isVisible &&
@@ -132,6 +155,50 @@ function App() {
                     </div>
 
                     
+                    </FadeIn> }
+
+                  </div>
+              </div>
+          </FadeIn></div>}
+
+          { Lclicked &&
+              <div> <FadeIn>
+              <div>
+                    {isVisible &&
+                      <FadeIn>
+                      {Lincs}
+                      </FadeIn>}
+
+                  <div class="container">
+
+                  {isVisible &&
+                    <FadeIn>
+
+                    <div class="row" style={{'margin-top':'20px'}}>
+                      <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>AFIB Presdicted {AFIB}</div>
+                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>AFIB Actual {AFIBtrue}</div>
+                    </div>
+
+                    <div class="row" style={{'margin-top':'20px'}}>
+                      <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal Gait Predicted {AG}</div>
+                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal Gait True {AGtrue}</div>
+                    </div>
+
+                    <div class="row" style={{'margin-top':'20px'}}>
+                      <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal LFTs Predicted {AL}</div>
+                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal LFTs True {ALtrue}</div>
+                    </div>
+
+                    <div class="row" style={{'margin-top':'20px'}}>
+                      <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Aching Joints Gait Predicted {AJ}</div>
+                      <div class="col-sm rounded border border-danger text-danger" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Aching Joints True {AJtrue}</div>
+                    </div>
+
+                    <div class="row" style={{'margin-top':'20px'}}>
+                      <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Acidosis Predicted {AC}</div>
+                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Acidosis True {ACtrue}</div>
+                    </div>
+
                     </FadeIn> }
 
                   </div>
