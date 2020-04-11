@@ -1,4 +1,5 @@
 import flask
+from flask_cors import CORS, cross_origin
 from flask import request, jsonify
 from gensim.models import word2vec
 from rdkit import Chem
@@ -15,8 +16,10 @@ from keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Dense, Conv1D, Flatten, Reshape, GRU, SpatialDropout1D, LSTM, Dropout
 from keras.layers import BatchNormalization, MaxPool1D
+from sklearn.ensemble import ExtraTreesClassifier
 
 app = flask.Flask(__name__)
+CORS(app)
 
 class Network:
     def __init__(self, num_classes, oe):
@@ -65,6 +68,7 @@ def mol2alt_sentence(mol, radius):
 
 
 @app.route('/getClassification', methods=['GET'])
+@cross_origin()
 def home():
 	try:
 		smile = request.args["smile"]
@@ -84,7 +88,8 @@ def home():
 			result = {
 			"KNN": le.inverse_transform(neigh.predict(X))[0],
 			"RF": le.inverse_transform(rf_model.predict(X))[0],
-			"ANN": le.inverse_transform(network.predict(X))[0]
+            "ANN": le.inverse_transform(network.predict(X))[0],
+			"XT": le.inverse_transform(xt_model.predict(X))[0]
 			}
 
 			return jsonify(result), 200
@@ -146,6 +151,11 @@ rf_model = RandomForestClassifier(n_estimators=100,
                            bootstrap = True,
                            max_features = 'sqrt', criterion='entropy')
 rf_model.fit(X, y)
+
+xt_model = ExtraTreesClassifier(n_estimators=100, warm_start=True,
+                                max_features = 'sqrt', criterion='entropy', random_state=98)
+# Fit on training data
+xt_model.fit(X, y)
 
 print("Setting Up ANN")
 oeAtc = OneHotEncoder(sparse=False)

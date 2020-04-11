@@ -9,6 +9,8 @@ import FadeIn from 'react-fade-in'
 function App() {
   const [KNN, setKNN] = useState(0);
   const [ANN, setANN] = useState(0);
+  const [RF, setRF] = useState(0);
+  const [XT, setXT] = useState(0);
   const [Smiles, setSmiles] = useState(0);
   const [Actual, setActual] = useState(0);
   const [Input, setInput] = useState(0);
@@ -37,10 +39,12 @@ function App() {
     event.preventDefault();
     if(Sclicked)
     {
-    fetch('/SMILES/'+Input).then(res => res.json()).then(data => {
+    fetch('http://localhost:5000/getClassification?smile='+Input).then(res => res.json()).then(data => {
         setSmiles(data['smiles']);
         setKNN(data["KNN"]);
         setANN(data["ANN"]);
+        setRF(data["RF"]);
+        setXT(data["XT"]);
         setActual(data['Actual']);
         setVisible(true);
 
@@ -56,6 +60,8 @@ function App() {
           setSmiles(data['genes']);
           setKNN(data["KNN"]);
           setANN(data["ANN"]);
+          setRF(data["RF"]);
+          setXT(data["XT"]);
           setActual(data['Actual']);
           setVisible(true);
 
@@ -116,23 +122,16 @@ function App() {
                     <FadeIn>
 
                     <div class="row" style={{'margin-top':'20px'}}>
-                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>KNN predicts {KNN}</div>
-                    <div class="col-sm rounded border border-danger text-danger" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>ANN predicts {ANN}</div>
-                    <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>Actual predicts {Actual}</div>
+                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>XT predicts {XT}</div>
+                    <div class="col-sm rounded border border-danger text-danger" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>RF predicts {RF}</div>
+                    <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>KNN predicts {KNN}</div>
                     </div>
 
                     <div class="row" style={{'margin-top':'20px'}}>
-                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>KNN predicts {KNN}</div>
-                    <div class="col-sm rounded border border-danger text-danger" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>ANN predicts {ANN}</div>
-                    <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>Actual predicts {Actual}</div>
+                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>ANN predicts {ANN}</div>
                     </div>
 
-                    <div class="row" style={{'margin-top':'20px'}}>
-                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>KNN predicts {KNN}</div>
-                    <div class="col-sm rounded border border-danger text-danger" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>ANN predicts {ANN}</div>
-                    <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>Actual predicts {Actual}</div>
-                    </div>
-
+                    
                     </FadeIn> }
 
                   </div>
