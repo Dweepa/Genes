@@ -104,27 +104,33 @@ def home():
 		print(e)
 		return jsonify([-1, "Smile not provided"]), 400
 
+def getFeatures(one, two):
+    if one.lower()=='salmeterol' and two.lower()=='sulindac':
+        index = 0
+    elif one.lower()=='bupivacaine' and two.lower()=='verpamil':
+        index = 1
+    return pca.iloc[index, : 1000]
+
 
 @app.route('/getAdrClassification', methods=['GET'])
 def home2():
     try:
         features = request.args["features"]
-        features = features.strip('][').split(', ')
-        features = [float(e) for e in features]
+        features = features.strip('][').split(',')
+        features = getFeatures(str(features[0]), str(features[1]))
         try:
             result = {}
-            features = pd.Series(features)
             result['AFIB'] = int(afib.predict([features])[0])
             result['AG'] = int(ag.predict([features])[0])
             result['AL'] = int(al.predict([features])[0])
             result['AJ'] = int(aj.predict([features])[0])
             result['AC'] = int(ac.predict([features])[0])
 
-            result['AFIBtrue'] = int(label.loc[0, 'AFIB'])
-            result['AGtrue'] = int(label.loc[0, 'Abnormal.Gait'])
-            result['ALtrue'] = int(label.loc[0, 'Abnormal.LFTs'])
-            result['AJtrue'] = int(label.loc[0, 'Aching.joints'])
-            result['ACtrue'] = int(label.loc[0, 'Acidosis'])
+            result['AFIBtrue'] = int(label.loc[index, 'AFIB'])
+            result['AGtrue'] = int(label.loc[index, 'Abnormal.Gait'])
+            result['ALtrue'] = int(label.loc[index, 'Abnormal.LFTs'])
+            result['AJtrue'] = int(label.loc[index, 'Aching.joints'])
+            result['ACtrue'] = int(label.loc[index, 'Acidosis'])
             print(result)
             return jsonify(result), 200
 
@@ -152,6 +158,8 @@ with open("../skipgram/data/mol_sentences.pkl", "rb") as file:
 atc = [sentence[1][0] for sentence in sentences]
 sentences = [sentence[3] for sentence in sentences]
 label = pd.read_csv("../data/ADR_combined.csv")
+pca = pd.read_csv("../data/selectedPCA.csv")
+index=0
 
 print("Vectorising")
 vectors = []

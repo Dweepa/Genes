@@ -176,27 +176,32 @@ function App() {
 
                     <div class="row" style={{'margin-top':'20px'}}>
                       <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>AFIB Presdicted {AFIB}</div>
-                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>AFIB Actual {AFIBtrue}</div>
+                      <div class={(AFIBtrue == AFIB) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"} 
+                        style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>AFIB Actual {AFIBtrue}</div>
                     </div>
 
                     <div class="row" style={{'margin-top':'20px'}}>
                       <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal Gait Predicted {AG}</div>
-                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal Gait True {AGtrue}</div>
+                      <div class={(AGtrue == AG) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"}
+                       style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal Gait True {AGtrue}</div>
                     </div>
 
                     <div class="row" style={{'margin-top':'20px'}}>
                       <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal LFTs Predicted {AL}</div>
-                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal LFTs True {ALtrue}</div>
+                      <div class={(ALtrue == AL) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"}
+                       style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Abnormal LFTs True {ALtrue}</div>
                     </div>
 
                     <div class="row" style={{'margin-top':'20px'}}>
                       <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Aching Joints Gait Predicted {AJ}</div>
-                      <div class="col-sm rounded border border-danger text-danger" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Aching Joints True {AJtrue}</div>
+                      <div class={(AJtrue == AJ) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"}
+                       style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Aching Joints True {AJtrue}</div>
                     </div>
 
                     <div class="row" style={{'margin-top':'20px'}}>
                       <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Acidosis Predicted {AC}</div>
-                      <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Acidosis True {ACtrue}</div>
+                      <div class={(ACtrue == AC) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"}
+                       style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Acidosis True {ACtrue}</div>
                     </div>
 
                     </FadeIn> }
