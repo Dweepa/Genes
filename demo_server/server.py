@@ -104,11 +104,14 @@ def home():
 		print(e)
 		return jsonify([-1, "Smile not provided"]), 400
 
+index=-1
 def getFeatures(one, two):
+    global index
     if one.lower()=='salmeterol' and two.lower()=='sulindac':
         index = 0
     elif one.lower()=='bupivacaine' and two.lower()=='verpamil':
         index = 1
+    print(index)
     return pca.iloc[index, : 1000]
 
 
@@ -116,8 +119,9 @@ def getFeatures(one, two):
 def home2():
     try:
         features = request.args["features"]
-        features = features.strip('][').split(',')
+        features = features.split(',')
         features = getFeatures(str(features[0]), str(features[1]))
+        print(features)
         try:
             result = {}
             result['AFIB'] = int(afib.predict([features])[0])
@@ -159,7 +163,7 @@ atc = [sentence[1][0] for sentence in sentences]
 sentences = [sentence[3] for sentence in sentences]
 label = pd.read_csv("../data/ADR_combined.csv")
 pca = pd.read_csv("../data/selectedPCA.csv")
-index=0
+pca.drop("Unnamed: 0", inplace=True, axis=1)
 
 print("Vectorising")
 vectors = []
