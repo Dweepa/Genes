@@ -11,6 +11,7 @@ function App() {
   const [ANN, setANN] = useState(0);
   const [RF, setRF] = useState(0);
   const [XT, setXT] = useState(0);
+  const [ATC, setATC] = useState(0);
   const [Smiles, setSmiles] = useState(0);
   const [Lincs, setLincs] = useState(0);
   const [AFIB, setAFIB] = useState(0);
@@ -58,6 +59,7 @@ function App() {
         setANN(data["ANN"]);
         setRF(data["RF"]);
         setXT(data["XT"]);
+        setATC(data["ATC"]);
         setActual(data['Actual']);
         setVisible(true);
 
@@ -98,14 +100,14 @@ function App() {
         <div style={{'padding-top':'100px'}}>
             {Sclicked==Lclicked && !Sclicked &&
         <div>
-      <Button outline style={{"border-color":"pink","color":"pink", "margin":"50px", "margin-top":"200px"}} onClick={getLINCS}> LINCS </Button>
-      <Button outline style={{"border-color":"pink","color":"pink", "margin":"50px", "margin-top":"200px"}} onClick={getSMILES}> SMILES </Button>
+      <Button outline style={{"border-color":"pink","color":"pink", "margin":"50px", "margin-top":"200px"}} onClick={getLINCS}> Predict ADR </Button>
+      <Button outline style={{"border-color":"pink","color":"pink", "margin":"50px", "margin-top":"200px"}} onClick={getSMILES}> Predict ATC </Button>
     </div>}
             {Lclicked &&
               <div>
                 <FadeIn>
-                  <Button outline style={{"border-color":"teal","color":"teal", "margin-bottom":"20px"}} onClick={getSMILES}> Switch to SMILES </Button>
-                  <p style={{"color":"pink"}}>LINCS</p>
+                  <Button outline style={{"border-color":"teal","color":"teal", "margin-bottom":"20px"}} onClick={getSMILES}> Switch to ATC </Button>
+                  <p style={{"color":"pink"}}>Predict ADR</p>
                   <form onSubmit={getClass}>
                     <input type="text" class="rounded border border-primary" name="smiles" 
                     style={{'letter-spacing':'2px','text-align':'center','color':'white','width':'750px','font-size':'80%',
@@ -120,8 +122,8 @@ function App() {
             {Sclicked &&
               <div>
               <FadeIn>
-            <Button outline style={{"border-color":"teal","color":"teal", "margin-bottom":"20px"}} onClick={getLINCS}> Switch to LINCS </Button>
-            <p style={{"color":"pink"}}>SMILES</p>
+            <Button outline style={{"border-color":"teal","color":"teal", "margin-bottom":"20px"}} onClick={getLINCS}> Switch to ADR </Button>
+            <p style={{"color":"pink"}}>Predict ATC</p>
             <form onSubmit={getClass}>
             <input type="text" class="rounded border border-primary" name="smiles" style={{'letter-spacing':'2px','text-align':'center','color':'white','width':'750px','font-size':'80%','margin':'10px','padding':'20px', "background-color":"#282c34"}}onChange={event => setInput(event.target.value)}/>
             <br/>
@@ -145,13 +147,14 @@ function App() {
                     <FadeIn>
 
                     <div class="row" style={{'margin-top':'20px'}}>
-                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>XT predicts {XT}</div>
-                    <div class="col-sm rounded border border-danger text-danger" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>RF predicts {RF}</div>
-                    <div class="col-sm rounded border border-success text-success" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>KNN predicts {KNN}</div>
+                    <div class="col-sm rounded border border-info text-info" class={(XT == ATC) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"} style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px'}}>XT predicts {XT}</div>
+                    <div class="col-sm rounded border border-danger text-danger" class={(RF == ATC) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"} style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>RF predicts {RF}</div>
+                    <div class="col-sm rounded border border-success text-success" class={(KNN == ATC) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"} style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'2%','padding':'20px', "background-color":"#282c34"}}>KNN predicts {KNN}</div>
+                    <div class="col-sm rounded border border-info text-info" class={(ANN == ATC) ? "col-sm rounded border border-success text-success": "col-sm rounded border border-danger text-danger"} style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>ANN predicts {ANN}</div>
                     </div>
 
                     <div class="row" style={{'margin-top':'20px'}}>
-                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>ANN predicts {ANN}</div>
+                    <div class="col-sm rounded border border-info text-info" style={{'letter-spacing':'2px','text-align':'center','font-size':'80%','margin-left':'1%','padding':'20px', "background-color":"#282c34"}}>Actual {ATC}</div>
                     </div>
 
                     

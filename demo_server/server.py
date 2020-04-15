@@ -2,8 +2,8 @@ import flask
 from flask_cors import CORS, cross_origin
 from flask import request, jsonify
 from gensim.models import word2vec
-# from rdkit import Chem
-# from rdkit.Chem import AllChem
+from rdkit import Chem
+from rdkit.Chem import AllChem
 import pandas as pd
 import pickle
 import sys
@@ -19,6 +19,9 @@ from keras.models import Sequential
 from keras.layers import Dense, Conv1D, Flatten, Reshape, GRU, SpatialDropout1D, LSTM, Dropout
 from keras.layers import BatchNormalization, MaxPool1D
 from sklearn.ensemble import ExtraTreesClassifier
+import requests
+import json
+from bs4 import BeautifulSoup
 
 app = flask.Flask(__name__)
 CORS(app)
@@ -49,7 +52,7 @@ class Network:
 def mol2alt_sentence(mol, radius):
     radii = list(range(int(radius) + 1))
     info = {}
-    # _ = AllChem.GetMorganFingerprint(mol, radius, bitInfo=info)  # info: dictionary identifier, atom_idx, radius
+    _ = AllChem.GetMorganFingerprint(mol, radius, bitInfo=info)  # info: dictionary identifier, atom_idx, radius
 
     mol_atoms = [a.GetIdx() for a in mol.GetAtoms()]
     dict_atoms = {x: {r: None for r in radii} for x in mol_atoms}
@@ -74,8 +77,34 @@ def mol2alt_sentence(mol, radius):
 def home():
 	try:
 		smile = request.args["smile"]
+		ATC = "?"
 		try:
-			# sentence = mol2alt_sentence(Chem.MolFromSmiles(smile), 1)
+			try:
+				sentence = mol2alt_sentence(Chem.MolFromSmiles(smile), 1)
+			except:
+				drug_name = smile
+				URL = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{drug_name}/property/CanonicalSMILES"
+				headers = {"Accept":"application/json"}
+				r = requests.get(URL, headers=headers) 
+
+				info = json.loads(r.content)
+				smile = info['PropertyTable']['Properties'][0]['CanonicalSMILES']
+				sentence = mol2alt_sentence(Chem.MolFromSmiles(smile), 1)
+
+				try:
+					URL = f"https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query={drug_name}&searcher=drugs"
+					headers = {"Accept":"application/json"}
+					r = requests.get(URL) 
+					soup = BeautifulSoup(r.content)
+					dt = soup.findAll("dt")
+					dd = soup.findAll("dd")
+					for a,b in zip(dt, dd):
+						if a.text=="ATC Codes":
+							ATC = b.find("a").text[0]
+							break
+				except:
+					ATC = "?"
+
 			vector = []
 			for word in sentence:
 				try:
@@ -91,7 +120,8 @@ def home():
 			"KNN": le.inverse_transform(neigh.predict(X))[0],
 			"RF": le.inverse_transform(rf_model.predict(X))[0],
             "ANN": le.inverse_transform(network.predict(X))[0],
-			"XT": le.inverse_transform(xt_model.predict(X))[0]
+			"XT": le.inverse_transform(xt_model.predict(X))[0],
+			"ATC": ATC
 			}
 
 			return jsonify(result), 200
@@ -144,8 +174,8 @@ def home2():
 
 
 print("Loading Models")
-dimensions = 100
-w2v = word2vec.Word2Vec.load('../skipgram/mine_100')
+dimensions = 150
+w2v = word2vec.Word2Vec.load('../skipgram/mine_150')
 afib = pickle.load(open('../Models/RFforAFIB.sav', 'rb'))
 ag = pickle.load(open('../Models/DTforAG.sav', 'rb'))
 al = pickle.load(open('../Models/DTforAL.sav', 'rb'))
