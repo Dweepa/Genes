@@ -16,6 +16,4 @@ npm install
 npm start
 ```
 
-![Image of problemstatement](https://github.com/Dweepa/Genes/blob/master/PROBLEM%20STATEMENT.png)
-
-![Image of problemstatement](https://github.com/Dweepa/Genes/blob/master/PROBLEM%20STATEMENT-2.png)
+<p float="left"><img src="https://github.com/Dweepa/Genes/blob/master/PROBLEM%20STATEMENT.png" width="420"><img src="https://github.com/Dweepa/Genes/blob/master/PROBLEM%20STATEMENT-2.png" width="420"></p>
