@@ -1,7 +1,15 @@
 # Generating embeddings for drugs
 
-## Running the demo
+## Running the demo using docker
 
+```
+docker-compose pull
+docker-compose up
+
+enter localhost:3000 in the browser
+```
+
+## Running the demo via code
 ### Start the server
 ```
 cd demo_server
