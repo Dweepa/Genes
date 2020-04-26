@@ -1,0 +1,13 @@
+# docker-compose.yml
+version: "3.3"
+services:
+  app:
+      image: kavyavarma98/gene-project
+      ports:
+        - 5000:5000
+
+  client:
+      image: kavyavarma98/gene-ui
+      tty: true
+      ports:
+        - 3000:3000
