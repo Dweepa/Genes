@@ -84,7 +84,7 @@ for vector in vectors:
     sum_vectors.append(arr.sum(axis=0)/arr.shape[0])
 
 sum_vectors = np.asarray(sum_vectors)
-
+print(sum_vectors[0])
 le = LabelEncoder()
 le.fit(atc)
 
